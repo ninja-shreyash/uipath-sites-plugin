@@ -10,35 +10,18 @@ BASE_URLS = {
     "staging": "https://staging.api.uipath.com",
     "alpha": "https://alpha.api.uipath.com",
 }
-RUNTIME_ROOT = Path.home() / ".uipath-sites" / "runtime"
-RUNTIME_METADATA = RUNTIME_ROOT / "runtime.json"
-FALLBACK_UI_PATH = RUNTIME_ROOT / "node" / "node_modules" / ".bin" / "uip"
+UIP_PATH = Path.home() / ".uipath-sites" / "runtime" / "node" / "bin" / "uip"
 
 if ENVIRONMENT not in BASE_URLS:
     print(f"Unsupported environment '{ENVIRONMENT}'. Use cloud, staging, or alpha.", file=sys.stderr)
     sys.exit(1)
 
-def resolve_uip_path() -> Path:
-    if RUNTIME_METADATA.exists():
-        with RUNTIME_METADATA.open("r", encoding="utf-8") as handle:
-            metadata = json.load(handle)
-        configured = metadata.get("uipPath")
-        if configured:
-            candidate = Path(configured)
-            if candidate.exists():
-                return candidate
-
-    if FALLBACK_UI_PATH.exists():
-        return FALLBACK_UI_PATH
-
+if not UIP_PATH.exists():
     print(
-        "Private UiPath CLI not found. Run bootstrap-uipath-env.sh first.",
+        f"Private UiPath CLI not found at {UIP_PATH}. Run bootstrap-uipath-env.sh first.",
         file=sys.stderr,
     )
     sys.exit(1)
-
-
-UIP_PATH = resolve_uip_path()
 
 result = subprocess.run(
     [str(UIP_PATH), "login", "status", "--output", "json"],
