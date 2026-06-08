@@ -22,9 +22,11 @@ Codex marketplaces are path-based, so the reliable install flow is local.
 ```bash
 git clone https://github.com/ninja-shreyash/uipath-sites-plugin.git
 cd uipath-sites-plugin
-codex plugin marketplace add .
-codex plugin add uipath-sites@uipath-sites-marketplace
+codex marketplace add .
 ```
+
+Then restart or open the Codex app and install/enable `uipath-sites` from the
+`uipath-sites-marketplace` marketplace.
 
 ### Option 2: download ZIP
 
@@ -33,9 +35,11 @@ codex plugin add uipath-sites@uipath-sites-marketplace
 3. From the extracted repo root, run:
 
 ```bash
-codex plugin marketplace add .
-codex plugin add uipath-sites@uipath-sites-marketplace
+codex marketplace add .
 ```
+
+Then restart or open the Codex app and install/enable `uipath-sites` from the
+`uipath-sites-marketplace` marketplace.
 
 ## Plugin behavior
 
