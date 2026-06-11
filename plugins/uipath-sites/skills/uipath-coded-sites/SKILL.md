@@ -38,14 +38,8 @@ Do not use this skill for generic Sites requests like landing pages or normal Cl
 
 ## First-Run Bootstrap
 
-- This plugin expects a `SessionStart` hook to ensure `@uipath/cli` is installed globally.
-- If `uipath-coded-apps` is not installed, run:
-
-```bash
-uip skills install --agent codex
-```
-
-- After installing the skill, tell the user to start a new thread before relying on `uipath-coded-apps`.
+- This plugin expects a `SessionStart` hook to ensure `@uipath/cli` is installed globally and to install UiPath Codex skills with `uip skills install --agent codex`.
+- Do not treat skill installation as part of the coded-app workflow once the session has started; rely on the hook to prepare it up front.
 
 ## Project Contract
 

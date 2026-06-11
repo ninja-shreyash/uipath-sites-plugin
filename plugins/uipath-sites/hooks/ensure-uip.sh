@@ -1,5 +1,5 @@
 #!/bin/bash
-# Ensures @uipath/cli is installed globally.
+# Ensures @uipath/cli is installed globally and installs UiPath Codex skills.
 # Runs once per session via the SessionStart plugin hook.
 # If npm is missing, attempts to install Node.js first.
 # Supports Windows, macOS, and Linux.
@@ -150,5 +150,16 @@ ensure_npm_package() {
   fi
 }
 
+ensure_uipath_skills() {
+  local output
+  if ! output="$(uip skills install --agent codex 2>&1)"; then
+    echo "Failed to install UiPath Codex skills:" >&2
+    echo "$output" >&2
+    echo "Please run manually: uip skills install --agent codex" >&2
+    exit 2
+  fi
+}
+
 ensure_npm
 ensure_npm_package @uipath/cli
+ensure_uipath_skills

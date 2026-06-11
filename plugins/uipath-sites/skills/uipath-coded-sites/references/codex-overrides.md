@@ -16,6 +16,12 @@ Use these rules only to adapt the upstream `uipath-coded-apps` skill to Codex. O
 
 - Always run `uip login status --output json` before any cloud command if the upstream skill requires auth.
 - If login is missing or invalid, stop and complete the login flow before continuing.
+- If the current CLI session is logged into a different environment, organization, or tenant than the app target the user provided, treat it as a login mismatch and re-run `uip login` against the app target before continuing.
+- When re-logging for a mismatch, always use the app configuration target the user provided as input:
+  - environment (`cloud`, `staging`, `alpha`)
+  - organization
+  - tenant
+- Do not continue with a publish or deploy path while the CLI session still points at a different org, tenant, or environment than the requested app target.
 
 ## Deploy command behavior
 
