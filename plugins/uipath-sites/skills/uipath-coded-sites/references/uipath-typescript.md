@@ -21,10 +21,7 @@ Use these rules when `@Sites` output must be deployable as a UiPath coded app.
 ## Canonical publish flow
 
 ```bash
-# private plugin-managed CLI under ~/.uipath-sites/runtime/
-uip skills install --agent codex
-uip tools install codedapp
-uip login
+# use the official uipath-coded-apps skill for the operational flow
 npm run build
 uip codedapp pack dist -n <app-name> --version <version> --content-type webapp
 uip codedapp publish --name <app-name> --version <version> --type Web
@@ -37,4 +34,4 @@ For these requests, do not hand the final deployment to normal Sites hosting unl
 
 ## Local verification
 
-After generation, start the app locally and ask the user to verify it before packaging and deployment. Do not ask whether the app should be run locally first.
+Follow the official `uipath-coded-apps` skill for local verification before packaging and deployment.

@@ -1,15 +1,15 @@
 {
   "name": "uipath-sites",
-  "version": "0.1.0+codex.20260606081301",
-  "description": "Bootstrap plugin that routes UiPath coded-app requests away from normal Sites hosting and prepares the UiPath CLI workflow on first use.",
+  "version": "0.1.0+codex.20260611183000",
+  "description": "Routing plugin that teaches Sites requests to hand off UiPath coded-app work to the official UiPath skills after ensuring the UiPath CLI is available.",
   "author": {
     "name": "Local developer"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "UiPath Sites",
-    "shortDescription": "Bootstrap Sites into UiPath coded apps.",
-    "longDescription": "UiPath Sites teaches Codex to use Sites for frontend generation while bootstrapping the UiPath CLI, skills, login flow, local verification, and coded-app packaging/deployment.",
+    "shortDescription": "Route Sites into UiPath coded apps.",
+    "longDescription": "UiPath Sites teaches Codex to treat matched @Sites requests as UiPath coded apps, ensures the UiPath CLI is present at session start, and defers coded-app operations to the official UiPath skills.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [
@@ -19,7 +19,7 @@
     "defaultPrompt": [
       "@Sites build a UiPath coded app for Maestro.",
       "@Sites create a coded app using uipath-typescript.",
-      "@Sites build, verify locally, and deploy with uip codedapp."
+      "@Sites build a UiPath coded app and hand off deployment to uip codedapp."
     ]
   }
 }
