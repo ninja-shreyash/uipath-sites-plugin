@@ -12,16 +12,17 @@ Use this skill when the user invokes `@Sites` but the real target is a UiPath co
 - Treat matched UiPath requests as a deployment-target override of normal Sites hosting.
 - Use `Sites` for product and UI-building behavior only.
 - Do **not** use the `sites-hosting` flow for matched UiPath coded-app requests.
-- Use the bundled `uipath-coded-apps` skill that ships with this plugin as the source of truth for:
+- Use the installed `uipath-coded-apps` skill as the source of truth for:
   - `uipath.json`
   - OAuth and auth setup
   - `@uipath/uipath-typescript`
   - local verification
   - `pack -> publish -> deploy`
-- After handoff, follow the `uipath-coded-apps` skill exactly as written.
+- After handoff, follow the `uipath-coded-apps` skill exactly as written, except where this plugin's Codex override rules explicitly change behavior.
 - Do not skip, reorder, infer around, or partially substitute any required `uipath-coded-apps` step.
 - If `uipath-coded-apps` requires a login-status check, user input, build, verification, pack, publish, or deploy step, complete it in that order before moving on.
 - Before any cloud action, obey the official skill's preconditions exactly, including `uip login status --output json` when required.
+- Apply the Codex-specific rules in [references/codex-overrides.md](references/codex-overrides.md) before following the rest of `uipath-coded-apps`.
 
 ## Match Conditions
 
@@ -38,8 +39,13 @@ Do not use this skill for generic Sites requests like landing pages or normal Cl
 ## First-Run Bootstrap
 
 - This plugin expects a `SessionStart` hook to ensure `@uipath/cli` is installed globally.
-- This plugin bundles its own Codex-native `uipath-coded-apps` skill, so do not run `uip skills install --agent codex` as a prerequisite for coded-app flows.
-- Use the bundled skill directly after routing.
+- If `uipath-coded-apps` is not installed, run:
+
+```bash
+uip skills install --agent codex
+```
+
+- After installing the skill, tell the user to start a new thread before relying on `uipath-coded-apps`.
 
 ## Project Contract
 
