@@ -4,7 +4,11 @@ Use these rules only to adapt the upstream `uipath-coded-apps` skill to Codex. O
 
 ## User input
 
+- Collect all required setup inputs at the start of the coded-app workflow, before writing files, building, or launching the local app.
+- Do not defer required setup questions until just before local verification or deployment.
 - If the upstream skill says to use `AskUserQuestion` or any Claude-specific question tool, ask the user directly in normal Codex chat instead.
+- If Codex exposes a structured input tool such as `request_user_input`, prefer that for the initial setup questions.
+- If a structured input tool is not available in the current runtime, ask the same questions directly in normal Codex chat and wait for the user's reply before proceeding.
 - Do not skip required questions for app type, environment, app name, client ID, org, tenant, folder, or any other input the upstream skill requires.
 
 ## Local run
