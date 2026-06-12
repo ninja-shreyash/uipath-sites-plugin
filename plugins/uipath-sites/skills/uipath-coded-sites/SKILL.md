@@ -1,40 +1,41 @@
 ---
 name: uipath-coded-sites
-description: Use with Sites when a site request must become a UiPath coded app, use `@uipath/uipath-typescript`, create `uipath.json`, or deploy with `uip codedapp`. Trigger on `@Sites` requests mentioning UiPath, coded app, Orchestrator, `uipath-typescript`, `uip codedapp`, or projects that already contain `uipath.json`.
+description: Use when a request must create or modify a UiPath coded app, use `@uipath/uipath-typescript`, create `uipath.json`, or deploy with `uip codedapp`. Trigger on UiPath coded app, Coded Web App, Coded Action App, `uipath-typescript`, `uip codedapp`, `app.config.json`, `action-schema.json`, or `uipath.json`.
 ---
 
 # UiPath Coded Sites
 
-Use this skill when the user invokes `@Sites` but the real target is a UiPath coded app instead of normal Sites hosting.
+Use this skill when the user invokes the UiPath Sites plugin or otherwise asks Codex to create, modify, validate, package, publish, or deploy a UiPath coded app.
 
 ## Routing Rules
 
-- Treat matched UiPath requests as a deployment-target override of normal Sites hosting.
-- Use `Sites` for product and UI-building behavior only.
-- Do **not** use the `sites-hosting` flow for matched UiPath coded-app requests.
 - Use the installed `uipath-coded-apps` skill as the source of truth for:
-  - `uipath.json`
+  - project shape
+  - `uipath.json`, `app.config.json`, and `action-schema.json`
   - OAuth and auth setup
+  - scopes, redirect URLs, org, tenant, folder, and environment handling
   - `@uipath/uipath-typescript`
-  - local verification
+  - local validation
   - `pack -> publish -> deploy`
 - After handoff, follow the `uipath-coded-apps` skill exactly as written, except where this plugin's Codex override rules explicitly change behavior.
 - Do not skip, reorder, infer around, or partially substitute any required `uipath-coded-apps` step.
 - If `uipath-coded-apps` requires a login-status check, user input, build, verification, pack, publish, or deploy step, complete it in that order before moving on.
 - Before any cloud action, obey the official skill's preconditions exactly, including `uip login status --output json` when required.
 - Apply the Codex-specific rules in [references/codex-overrides.md](references/codex-overrides.md) before following the rest of `uipath-coded-apps`.
+- Apply the frontend styling rules in [references/frontend-design-overrides.md](references/frontend-design-overrides.md) when creating or materially changing the app UI.
 
 ## Match Conditions
 
 Apply this skill when any of the following are true:
 
-- the user says `@Sites` and mentions `UiPath`
-- the user says `@Sites` and mentions `coded app`
-- the user says `@Sites` and mentions `Orchestrator`
-- the user says `@Sites` and mentions `uip codedapp`
-- the project already contains `uipath.json`
+- the user asks for a `UiPath coded app`
+- the user asks for a `Coded Web App` or `Coded Action App`
+- the user mentions `@uipath/uipath-typescript` or `uipath-typescript`
+- the user mentions `uip codedapp`
+- the user asks to create or modify `uipath.json`
+- the project contains `uipath.json`, `app.config.json`, or `action-schema.json`
 
-Do not use this skill for generic Sites requests like landing pages or normal Cloudflare-hosted internal tools unless the user explicitly wants UiPath coded-app output.
+Do not use this skill for generic web apps, landing pages, portfolios, dashboards, or internal tools unless the user explicitly wants UiPath coded-app output.
 
 ## First-Run Bootstrap
 
@@ -43,13 +44,12 @@ Do not use this skill for generic Sites requests like landing pages or normal Cl
 
 ## Project Contract
 
-For matched requests, shape the Sites output as a UiPath-coded-app-compatible project:
+For matched requests, create or modify a UiPath-coded-app-compatible project:
 
 - static Vite + React app
 - `base: './'`
 - `@uipath/uipath-typescript`
-- `uipath.json` at project root
+- the coded-app config files required by `uipath-coded-apps`
 - `getAppBase()` for router basename when a client router is present
-- no `.openai/hosting.json` unless the user explicitly asks for dual deployment
 
-Follow the official `uipath-coded-apps` skill's requirements for `uipath.json`, scopes, auth, SDK usage, build, and deploy. Read [references/uipath-typescript.md](references/uipath-typescript.md) for the Sites-specific compatibility rules that differ from normal Sites output.
+Follow the official `uipath-coded-apps` skill's requirements for config, scopes, auth, SDK usage, build, local validation, pack, publish, and deploy. This skill adds routing, Codex behavior overrides, and frontend design guidance only.

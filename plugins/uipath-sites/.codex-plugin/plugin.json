@@ -1,15 +1,15 @@
 {
   "name": "uipath-sites",
-  "version": "0.1.0+codex.20260611193500",
-  "description": "Routing plugin that teaches Sites requests to hand off UiPath coded-app work to the installed UiPath skill, while applying Codex-specific override rules after ensuring the UiPath CLI is available.",
+  "version": "0.1.0+codex.20260612120000",
+  "description": "UiPath coded-app plugin that combines frontend design rules, Codex behavior overrides, and the installed UiPath coded-app skill after ensuring the UiPath CLI is available.",
   "author": {
     "name": "Local developer"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "UiPath Sites",
-    "shortDescription": "Route Sites into UiPath coded apps.",
-    "longDescription": "UiPath Sites teaches Codex to treat matched @Sites requests as UiPath coded apps, ensures the UiPath CLI is present at session start, and defers coded-app operations to the installed UiPath coded-app skill with a small set of Codex-specific override rules.",
+    "shortDescription": "Create polished UiPath coded apps.",
+    "longDescription": "UiPath Sites teaches Codex to create polished UiPath coded apps by combining frontend design guidance with the installed UiPath coded-app skill. It ensures the UiPath CLI and Codex skills are prepared at session start, then applies Codex-specific override rules for input handling, local verification, login checks, and deploy command behavior.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [
@@ -17,9 +17,9 @@
       "Run"
     ],
     "defaultPrompt": [
-      "@Sites build a UiPath coded app for Maestro.",
-      "@Sites create a coded app using uipath-typescript.",
-      "@Sites build a UiPath coded app and hand off deployment to uip codedapp."
+      "@UiPath Sites create a coded app to display Orchestrator processes.",
+      "@UiPath Sites create a Coded Web App using uipath-typescript.",
+      "@UiPath Sites build a polished UiPath coded app and deploy with uip codedapp."
     ]
   }
 }

@@ -32,7 +32,7 @@ Use these rules only to adapt the upstream `uipath-coded-apps` skill to Codex. O
 - For normal deploys, do not add `--version` to `uip codedapp deploy`.
 - Only pass `--version` if the user explicitly wants to deploy a specific published version.
 
-## Sites behavior
+## Plugin behavior
 
-- `@Sites` is only for app generation and UX shaping in this flow.
-- Never fall back to normal Sites hosting for matched UiPath coded-app requests unless the user explicitly asks for dual deployment.
+- Treat this plugin as a direct UiPath coded-app workflow helper.
+- Do not switch to unrelated web-app publishing or hosting flows unless the user explicitly asks for a separate web deployment.
