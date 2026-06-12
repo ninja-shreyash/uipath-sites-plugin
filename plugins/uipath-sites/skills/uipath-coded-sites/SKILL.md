@@ -23,7 +23,7 @@ Use this skill when the user invokes `@Sites` but the real target is a UiPath co
 - If `uipath-coded-apps` requires a login-status check, user input, build, verification, pack, publish, or deploy step, complete it in that order before moving on.
 - Before any cloud action, obey the official skill's preconditions exactly, including `uip login status --output json` when required.
 - Apply the Codex-specific rules in [references/codex-overrides.md](references/codex-overrides.md) before following the rest of `uipath-coded-apps`.
-- Apply the frontend styling rules in [references/frontend-design-overrides.md](references/frontend-design-overrides.md) when generating or modifying the coded app UI.
+- Apply [references/frontend-design-overrides.md](references/frontend-design-overrides.md) as the full UI design guidance when generating or modifying the coded app UI.
 
 ## Match Conditions
 
@@ -53,4 +53,4 @@ For matched requests, shape the Sites output as a UiPath-coded-app-compatible pr
 - `getAppBase()` for router basename when a client router is present
 - no `.openai/hosting.json` unless the user explicitly asks for dual deployment
 
-Follow the official `uipath-coded-apps` skill's requirements for `uipath.json`, scopes, auth, SDK usage, build, and deploy. Read [references/uipath-typescript.md](references/uipath-typescript.md) for the Sites-specific compatibility rules that differ from normal Sites output. Use [references/frontend-design-overrides.md](references/frontend-design-overrides.md) for visual styling guidance.
+Follow the official `uipath-coded-apps` skill's requirements for `uipath.json`, scopes, auth, SDK usage, build, and deploy. Read [references/uipath-typescript.md](references/uipath-typescript.md) for the Sites-specific compatibility rules that differ from normal Sites output. Use [references/frontend-design-overrides.md](references/frontend-design-overrides.md) as the full UI design guidance.
