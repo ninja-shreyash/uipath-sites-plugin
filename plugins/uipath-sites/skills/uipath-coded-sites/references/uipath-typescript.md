@@ -8,6 +8,7 @@ Use these rules when `@Sites` output must be deployable as a UiPath coded app.
 - `uipath.json` is the primary coded-app config file.
 - Local development should use `@uipath/coded-apps-dev`.
 - The runtime deployment target is the UiPath ecosystem, not Sites hosting.
+- Sites is only the prompt entry point for these requests; do not use its starter, storage, auth, hosting, or Worker output assumptions.
 
 ## Required implementation details
 
