@@ -1,7 +1,7 @@
 {
   "name": "uipath-sites",
-  "version": "0.1.0+codex.20260611195500",
-  "description": "Routing plugin that teaches Sites requests to hand off UiPath coded-app work to the installed UiPath skill, while applying Codex and frontend-design override rules after ensuring the UiPath CLI is available.",
+  "version": "0.1.0+codex.20260614000200",
+  "description": "Routing plugin that treats matched Sites requests as UiPath coded apps, suppresses Sites hosting assumptions, and applies frontend-design guidance as UI-only guidance after ensuring the UiPath CLI is available.",
   "author": {
     "name": "Local developer"
   },
@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "UiPath Sites",
     "shortDescription": "Route Sites into UiPath coded apps.",
-    "longDescription": "UiPath Sites teaches Codex to treat matched @Sites requests as UiPath coded apps, ensures the UiPath CLI is present at session start, and defers coded-app operations to the installed UiPath coded-app skill with Codex-specific and frontend-design override rules.",
+    "longDescription": "UiPath Sites teaches Codex to treat matched @Sites requests as UiPath coded apps, suppress Sites starter/hosting/storage assumptions, ensure the UiPath CLI is present at session start, defer coded-app operations to the installed UiPath coded-app skill, and use frontend-design guidance only for UI craft.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [

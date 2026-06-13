@@ -1,6 +1,6 @@
 # Frontend Design Overrides
 
-Use these rules when generating or materially changing the UI for a UiPath coded app through the Sites-compatible flow. These rules affect presentation, interaction, and UX quality only; they do not override the `uipath-coded-apps` skill's technical, auth, build, or deployment instructions.
+Use these rules when generating or materially changing the UI for a UiPath coded app through the Sites-compatible prompt flow. These rules affect presentation, interaction, and UX quality only; they do not override the `uipath-coded-apps` skill's technical, auth, build, project-structure, or deployment instructions.
 
 The goal is to produce polished, purposeful application screens rather than generic generated dashboards. This file is an adapted, Codex/UiPath-specific interpretation of the Claude frontend-design guidance: keep the same design bar and decision coverage, but apply it to UiPath coded apps generated through the Sites experience.
 
@@ -20,7 +20,7 @@ The goal is to produce polished, purposeful application screens rather than gene
 - Prefer concrete app language over generic labels. Use terms from the user's domain in headings, table columns, empty states, filters, and actions.
 - Design for repeated work use when the app is operational: fast scanning, clear status, obvious actions, and low-friction review.
 - Do not invent large product areas the user did not request. Avoid speculative admin, settings, auth, storage, upload, or reporting flows unless needed for the requested workflow.
-- If Sites-style product shaping is used, keep that shaping focused on the coded-app workflow and final UiPath deployment target.
+- If `@Sites` is used as the prompt entry point, keep product shaping focused on the coded-app workflow and final UiPath deployment target. Do not introduce Sites hosting, storage, auth, or starter-template requirements.
 
 ## Visual direction
 

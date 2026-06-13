@@ -34,5 +34,6 @@ Use these rules only to adapt the upstream `uipath-coded-apps` skill to Codex. O
 
 ## Sites behavior
 
-- `@Sites` is only for app generation and UX shaping in this flow.
+- `@Sites` is only the user-facing invocation and product brief context in this flow.
+- Do not use Sites starters, vinext templates, Cloudflare Worker output, `.openai/hosting.json`, D1, R2, SIWC, OpenAI workspace auth headers, or Sites deployment for matched UiPath coded-app requests.
 - Never fall back to normal Sites hosting for matched UiPath coded-app requests unless the user explicitly asks for dual deployment.
