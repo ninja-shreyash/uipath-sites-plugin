@@ -37,3 +37,10 @@ Use these rules only to adapt the upstream `uipath-coded-apps` skill to Codex. O
 - `@Sites` is only the user-facing invocation and product brief context in this flow.
 - Do not use Sites starters, vinext templates, Cloudflare Worker output, `.openai/hosting.json`, D1, R2, SIWC, OpenAI workspace auth headers, or Sites deployment for matched UiPath coded-app requests.
 - Never fall back to normal Sites hosting for matched UiPath coded-app requests unless the user explicitly asks for dual deployment.
+
+## Skill boundary
+
+- For matched UiPath Sites coded-app requests, do not load or invoke other UiPath domain skills such as `uipath-platform`, `uipath-solution`, `uipath-rpa`, `uipath-maestro-flow`, `uipath-maestro-bpmn`, `uipath-api-workflow`, `uipath-admin`, or `uipath-tasks`.
+- Treat UiPath product terms inside an app request as data/source targets for the generated coded app, not as reasons to switch skills.
+- For Orchestrator, Storage Buckets, queues, assets, jobs, processes, Action Center, Data Fabric, Maestro, or Integration Service usage inside the app, use the installed `uipath-coded-apps` skill and its SDK references.
+- Invoke another UiPath skill only when the user explicitly asks to leave the coded-app flow and create or operate on a non-coded-app artifact.

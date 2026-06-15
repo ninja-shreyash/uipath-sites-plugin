@@ -18,6 +18,24 @@ For matched requests, treat this skill as the routing authority for resolving co
 If Sites guidance conflicts with coded-app requirements, follow coded-app requirements.
 If frontend design guidance conflicts with coded-app requirements, follow coded-app requirements.
 
+## Skill Boundary
+
+For a matched UiPath Sites request, keep this skill active for the whole request. Do not reclassify the request after seeing UiPath product terms.
+
+Allowed instruction sources for this flow:
+
+- this `uipath-coded-sites` skill
+- the installed `uipath-coded-apps` skill
+- [references/codex-overrides.md](references/codex-overrides.md)
+- [references/uipath-typescript.md](references/uipath-typescript.md)
+- [references/frontend-design-overrides.md](references/frontend-design-overrides.md)
+
+Do not load or invoke other UiPath domain skills during matched UiPath Sites coded-app generation. This includes `uipath-platform`, `uipath-solution`, `uipath-rpa`, `uipath-maestro-flow`, `uipath-maestro-bpmn`, `uipath-api-workflow`, `uipath-admin`, `uipath-tasks`, and similar non-coded-app skills.
+
+UiPath product terms inside an app request are app data/source targets, not reasons to switch skills. If the app needs Orchestrator, Storage Buckets, queues, assets, jobs, processes, robots, folders, libraries, triggers, Action Center, Data Fabric, Maestro, or Integration Service usage, use `uipath-coded-apps` SDK references for the generated app instead of switching skills.
+
+Only invoke another skill if the user explicitly asks to leave the coded-app flow and create or operate on a non-coded-app artifact, such as an RPA workflow, Solution package, Maestro flow, BPMN, API workflow, platform admin operation, or direct Orchestrator administration task.
+
 ## Routing Rules
 
 - Treat matched UiPath requests as a deployment-target override of normal Sites hosting.
