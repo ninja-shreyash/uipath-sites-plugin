@@ -1,6 +1,6 @@
 ---
 name: uipath-coded-sites
-description: Use with Sites when a site request must become a UiPath coded app, use `@uipath/uipath-typescript`, create `uipath.json`, or deploy with `uip codedapp`. Trigger on `@Sites` requests mentioning UiPath, coded app, Orchestrator, `uipath-typescript`, `uip codedapp`, or projects that already contain `uipath.json`.
+description: Use with Sites when a site request must become a UiPath coded app, use `@uipath/uipath-typescript`, create `uipath.json`, deploy with `uip codedapp`, or build an app around UiPath platform data. Trigger on `@Sites` requests mentioning UiPath, coded app, Orchestrator, Storage Buckets, queues, assets, jobs, processes, Action Center, Data Fabric, Integration Service, `uipath-typescript`, `uip codedapp`, or projects that already contain `uipath.json`.
 ---
 
 # UiPath Coded Sites
@@ -52,7 +52,10 @@ Apply this skill when any of the following are true:
 - the user says `@Sites` and mentions `UiPath`
 - the user says `@Sites` and mentions `coded app`
 - the user says `@Sites` and mentions `Orchestrator`
+- the user says `@Sites` and asks for an app over UiPath platform resources, including Storage Buckets, queues, assets, jobs, processes, robots, folders, libraries, triggers, Action Center tasks, Data Fabric, Integration Service, Maestro, or Apps/Coded Apps
+- the user says `@Sites` and asks to browse, manage, display, upload, download, preview, search, filter, or operate on UiPath data or resources
 - the user says `@Sites` and mentions `uip codedapp`
+- the user says `@Sites` and mentions `@uipath/uipath-typescript` or `uipath-typescript`
 - the project already contains `uipath.json`
 
 Do not use this skill for generic Sites requests like landing pages or normal Cloudflare-hosted internal tools unless the user explicitly wants UiPath coded-app output.
